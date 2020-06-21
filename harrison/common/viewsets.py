@@ -10,7 +10,11 @@ class BaseViewSet(
     ):
     serializer_class = None
 
-    authentication_classes = [authentication.SessionAuthentication, authentication.BasicAuthentication]
+    authentication_classes = [
+        authentication.SessionAuthentication,
+        authentication.BasicAuthentication,
+        authentication.TokenAuthentication
+    ]
     permission_classes = [permissions.IsAuthenticated]
 
 

@@ -1,9 +1,10 @@
 from django.db import models
 
-# Create your models here.
+import reversion
 from harrison.common.mixins import DateTimeMixin
 
 
+@reversion.register()
 class ClassificationStandard(DateTimeMixin):
     name = models.TextField(
         help_text="The name of this standard (ICD-10, ICD-9 etc)"
@@ -13,6 +14,7 @@ class ClassificationStandard(DateTimeMixin):
         return self.name
 
 
+@reversion.register()
 class ClassificationCode(DateTimeMixin):
     identifier = models.TextField(
         default=None,

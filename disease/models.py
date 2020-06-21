@@ -1,9 +1,10 @@
 from django.db import models
+import reversion
 
-# Create your models here.
 from harrison.common.mixins import DateTimeMixin
 
 
+@reversion.register()
 class Disease(DateTimeMixin):
     created_by = models.ForeignKey(
         'auth.User',

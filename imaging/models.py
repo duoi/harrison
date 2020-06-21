@@ -1,7 +1,9 @@
+import reversion
 from django.db import models
 from harrison.common.mixins import DateTimeMixin
 
 
+@reversion.register()
 class ImageLabel(DateTimeMixin):
     """
     The labels allocated to images.
@@ -27,6 +29,7 @@ class ImageLabel(DateTimeMixin):
         return f"{self.name} - {self.disease}"
 
 
+@reversion.register()
 class MedicalImage(DateTimeMixin):
     """
     This model holds the medical image data. Specifically,
