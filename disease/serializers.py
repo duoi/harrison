@@ -13,24 +13,29 @@ class DiseaseSerializer(DateTimeSerializerMixin):
         help_text="The primary key of this image"
     )
     name = serializers.CharField(
-        required=True
+        required=True,
+        help_text="The name of the disease"
     )
     snomedCtReference = serializers.CharField(
         required=False,
-        source='snomed_ct_reference'
+        source='snomed_ct_reference',
+        help_text="The SNOMED-CT identifier for this disease"
     )
     ICD10Reference = serializers.CharField(
         required=False,
-        source='icd_10_reference'
+        source='icd_10_reference',
+        help_text="The ICD-10 identifier for this disease"
     )
     ICD9Reference = serializers.CharField(
         required=False,
-        source='icd_9_reference'
+        source='icd_9_reference',
+        help_text="The ICD-9 identifier for this disease"
     )
     createdBy = serializers.CharField(
         read_only=True,
         required=False,
-        source="created_by"
+        source="created_by",
+        help_text="Who this disease record was added by"
     )
 
     def validate(self, attrs):

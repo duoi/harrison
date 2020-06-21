@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_root")
 
 # Application definition
 
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'reversion',
     'rest_framework.authtoken',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [

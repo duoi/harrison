@@ -16,7 +16,3 @@ class BaseViewSet(
         authentication.TokenAuthentication
     ]
     permission_classes = [permissions.IsAuthenticated]
-
-
-    # def initialize_request(self, request, *args, **kwargs):
-    #     pass

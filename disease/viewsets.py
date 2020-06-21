@@ -1,5 +1,5 @@
 from disease.models import Disease
-from disease.serializer import DiseaseSerializer
+from disease.serializers import DiseaseSerializer
 from harrison.common.permissions import IsResearcherOrReadOnly
 from harrison.common.viewsets import BaseViewSet
 

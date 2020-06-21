@@ -13,10 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, re_path, include
+
+from imaging.viewsets import login_required_files
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^', include(('harrison.api', 'api'), namespace='api', )),
+    url(r'^media/(?P<path>.*)$', login_required_files,
+        {'document_root': settings.MEDIA_ROOT}),
 ]

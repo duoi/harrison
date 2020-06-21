@@ -15,7 +15,7 @@ class ClassificationCodeSerializer(DateTimeSerializerMixin):
         help_text="The primary key of this image"
     )
     identifier = serializers.CharField(
-        required=False
+        required=False,
     )
     standard = serializers.ChoiceField(
         write_only=True,

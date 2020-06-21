@@ -11,12 +11,14 @@ class Disease(DateTimeMixin):
         editable=False,
         on_delete=models.DO_NOTHING,
         help_text="The user that created this disease entry"
+
     )
     name = models.TextField(
         default=None,
         null=True,
         blank=True,
-        help_text="The name of the disease being referenced"
+        help_text="The name of the disease being referenced",
+        unique=True
     )
     snomed_ct_reference = models.ForeignKey(
         'classification.ClassificationCode',

@@ -6,8 +6,13 @@ from harrison.common.mixins import DateTimeMixin
 
 @reversion.register()
 class ClassificationStandard(DateTimeMixin):
+    """
+    This model just holds a list of the various standards that can be
+    referenced
+    """
     name = models.TextField(
-        help_text="The name of this standard (ICD-10, ICD-9 etc)"
+        help_text="The name of this standard (ICD-10, ICD-9 etc)",
+        unique=True
     )
 
     def __str__(self):
@@ -16,10 +21,15 @@ class ClassificationStandard(DateTimeMixin):
 
 @reversion.register()
 class ClassificationCode(DateTimeMixin):
+    """
+    The disease classification identifiers for a particular classification
+    standard
+    """
     identifier = models.TextField(
         default=None,
         null=True,
         blank=True,
+        unique=True,
         help_text='Classification standard\'s code for this condition'
     )
     standard = models.ForeignKey(

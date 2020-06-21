@@ -1,8 +1,11 @@
+from django.views.static import serve
+
 from harrison.common.constants import MEDICAL_DOCTOR_USER_GROUP
 from harrison.common.permissions import IsResearcherOrReadOnly, IsDoctorOrReadOnly
 from harrison.common.viewsets import BaseViewSet
 from imaging.models import MedicalImage, ImageLabel
-from imaging.serializer import MedicalImageSerializer, ImageLabelSerializer
+from imaging.serializers import MedicalImageSerializer, ImageLabelSerializer
+from django.contrib.auth.decorators import login_required
 
 
 class MedicalImageViewSet(BaseViewSet):
@@ -24,3 +27,7 @@ class ImageLabelViewSet(BaseViewSet):
 
     permission_classes = [IsResearcherOrReadOnly,]
 
+
+@login_required
+def login_required_files(*args, **kwargs):
+    return serve(*args, **kwargs)

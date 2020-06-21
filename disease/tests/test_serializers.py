@@ -1,8 +1,7 @@
-from django.test import RequestFactory
 from rest_framework.exceptions import ValidationError
 from rest_framework.test import APITestCase, APIRequestFactory
 
-from disease.serializer import DiseaseSerializer
+from disease.serializers import DiseaseSerializer
 from harrison.common.factories import UserFactory
 
 
