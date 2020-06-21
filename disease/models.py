@@ -44,3 +44,6 @@ class Disease(DateTimeMixin):
         related_name="icd_9_disease",
         help_text="The ICD-9 code for this disease"
     )
+
+    def __str__(self):
+        return f"{self.name}"

@@ -23,6 +23,9 @@ class ImageLabel(DateTimeMixin):
         related_name="labels"
     )
 
+    def __str__(self):
+        return f"{self.name} - {self.disease}"
+
 
 class MedicalImage(DateTimeMixin):
     """
@@ -45,4 +48,7 @@ class MedicalImage(DateTimeMixin):
         related_name="images_using_label",
         help_text="The labels associated with this image"
     )
+
+    def __str__(self):
+        return f"{self.image}"
 
