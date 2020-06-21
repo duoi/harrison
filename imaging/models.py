@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.functional import cached_property
 from harrison.common.mixins import DateTimeMixin
 
 
@@ -41,7 +40,7 @@ class MedicalImage(DateTimeMixin):
     image = models.FileField(
         help_text="The image that has been uploaded"
     )
-    labels = models.ManyToManyField(
+    label = models.ManyToManyField(
         'imaging.MedicalImage',
         related_name="images_using_label",
         help_text="The labels associated with this image"
