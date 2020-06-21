@@ -32,9 +32,6 @@ class DiseaseSerializer(DateTimeSerializerMixin):
         required=False,
         source="created_by"
     )
-    image = serializers.FileField(
-        required=True
-    )
 
     def validate(self, attrs):
         """

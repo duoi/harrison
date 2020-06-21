@@ -18,9 +18,6 @@ class IsDoctorOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        import pdb; pdb.set_trace()
-
-
         return request.user.groups.filter(
             name=MEDICAL_DOCTOR_USER_GROUP
         ).exists()
@@ -39,8 +36,6 @@ class IsResearcherOrReadOnly(permissions.BasePermission):
         # so we'll always allow GET, HEAD or OPTIONS requests.
         if request.method in permissions.SAFE_METHODS:
             return True
-
-        import pdb; pdb.set_trace()
 
         return request.user.groups.filter(
             name=RESEARCHER_USER_GROUP
