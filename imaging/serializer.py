@@ -1,12 +1,18 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
+from disease.serializer import DiseaseSerializer
 from harrison.common.mixins import DateTimeSerializerMixin
 from imaging.models import MedicalImage, ImageLabel
 
 
 class ImageLabelSerializer(serializers.Serializer):
     name = serializers.CharField(
+        required=False
+    )
+    disease = DiseaseSerializer(
+        many=True,
         required=False
     )
 
@@ -44,9 +50,10 @@ class MedicalImageSerializer(DateTimeSerializerMixin):
         return attrs
 
     def create(self, validated_data):
-        user = None  # pass user back
+        user = self.context['request'].user
+
         obj = MedicalImage.objects.create(
-            created_by=user
+            created_by=user,
             **validated_data
         )
 

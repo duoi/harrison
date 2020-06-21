@@ -21,7 +21,7 @@ class ClassificationCode(DateTimeMixin):
         help_text='Classification standard\'s code for this condition'
     )
     standard = models.ForeignKey(
-        'disease.ClassificationStandard',
+        'classification.ClassificationStandard',
         default=None,
         null=True,
         blank=True,

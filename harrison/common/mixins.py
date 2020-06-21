@@ -9,12 +9,15 @@ class DateTimeMixin(models.Model):
     any model.
     """
     date_created = models.DateTimeField(
-        default=now(),
+        default=now,
         editable=False
     )
     date_updated = models.DateTimeField(
         auto_now=True
     )
+
+    class Meta:
+        abstract = True
 
 
 class DateTimeSerializerMixin(serializers.Serializer):
@@ -26,5 +29,5 @@ class DateTimeSerializerMixin(serializers.Serializer):
     dateUpdated = serializers.DateTimeField(
         read_only=True,
         required=False,
-        source="date_created"
+        source="date_updated"
     )

@@ -21,10 +21,6 @@ class ImageLabel(DateTimeMixin):
     )
     disease = models.ManyToManyField(
         'disease.Disease',
-        default=None,
-        null=True,
-        blank=True,
-        on_delete=models.DO_NOTHING,
         related_name="labels"
     )
 

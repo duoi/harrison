@@ -22,6 +22,8 @@ class Disease(DateTimeMixin):
         default=None,
         null=True,
         blank=True,
+        on_delete=models.DO_NOTHING,
+        related_name="snomed_ct_disease",
         help_text="The SNOMED-CT code for this disease"
     )
     icd_10_reference = models.ForeignKey(
@@ -29,6 +31,8 @@ class Disease(DateTimeMixin):
         default=None,
         null=True,
         blank=True,
+        on_delete=models.DO_NOTHING,
+        related_name="icd_10_disease",
         help_text="The ICD-10 code for this disease"
     )
     icd_9_reference = models.ForeignKey(
@@ -36,5 +40,7 @@ class Disease(DateTimeMixin):
         default=None,
         null=True,
         blank=True,
+        on_delete=models.DO_NOTHING,
+        related_name="icd_9_disease",
         help_text="The ICD-9 code for this disease"
     )
