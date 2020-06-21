@@ -38,6 +38,13 @@ class DiseaseSerializer(DateTimeSerializerMixin):
         help_text="Who this disease record was added by"
     )
 
+    def update(self, instance, validated_data):
+        for key, value in validated_data.items():
+            setattr(instance, key, value)
+
+        instance.save()
+        return instance
+
     def validate(self, attrs):
         """
         This can probably be made smaller by putting the field names

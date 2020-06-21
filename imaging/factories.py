@@ -12,6 +12,10 @@ class ImageLabelFactory(factory.django.DjangoModelFactory):
     created_by = factory.SubFactory(UserFactory)
     name = factory.Faker('company')
 
+    @factory.lazy_attribute
+    def name(self, *args, **kwargs):
+        return factory.Faker('company').generate({}) + f"{random.randint(00000,99999)}"
+
     @factory.post_generation
     def groups(self, create, *args, **kwargs):
         if not create:

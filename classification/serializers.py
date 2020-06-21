@@ -7,7 +7,7 @@ from harrison.common.mixins import DateTimeSerializerMixin
 class ClassificationCodeSerializer(DateTimeSerializerMixin):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['type'].choices = ClassificationStandard.objects.all()
+        self.fields['standard'].choices = ClassificationStandard.objects.all()
 
     id = serializers.IntegerField(
         read_only=True,

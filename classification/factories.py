@@ -1,4 +1,4 @@
-import random, factory
+import random, factory, uuid
 
 from classification.models import ClassificationCode, ClassificationStandard
 
@@ -7,8 +7,11 @@ class ClassificationCodeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ClassificationCode
 
-    identifier = factory.Sequence(lambda n: 'CC-%06d' % n)
     description = factory.Faker('company')
+
+    @factory.lazy_attribute
+    def identifier(self):
+        return uuid.uuid4()
 
     @factory.lazy_attribute
     def standard(self):

@@ -23,7 +23,7 @@ class ImageLabelSerializer(serializers.Serializer):
         if not attrs.get('disease'):
             return super().validate(attrs)
 
-        disease_list = attrs.get('diseases')
+        disease_list = attrs.get('disease')
         try:
             if not isinstance(disease_list, list):
                 disease_list = [disease_list]
