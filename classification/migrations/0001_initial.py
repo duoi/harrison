@@ -5,6 +5,14 @@ import django.db.models.deletion
 import django.utils.timezone
 
 
+
+def create_default_standards():
+    from classification.models import ClassificationStandard
+
+    items = ['SNOMED-CT', 'ICD-10', 'ICD-9']
+    [ClassificationStandard.objects.create(name=item) for item in items]
+
+
 class Migration(migrations.Migration):
 
     initial = True
@@ -39,4 +47,5 @@ class Migration(migrations.Migration):
                 'abstract': False,
             },
         ),
+        migrations.RunPython(create_default_standards)
     ]
