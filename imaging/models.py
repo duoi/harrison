@@ -4,11 +4,11 @@ from harrison.common.mixins import DateTimeMixin
 
 
 class ImageLabel(DateTimeMixin):
+    """
+    The labels allocated to images.
+    """
     created_by = models.ForeignKey(
         'auth.User',
-        default=None,
-        null=True,
-        blank=True,
         editable=False,
         on_delete=models.DO_NOTHING,
         help_text="The user that created this label"
@@ -19,13 +19,24 @@ class ImageLabel(DateTimeMixin):
         blank=True,
         help_text="The value of the label"
     )
-
-class MedicalImage(DateTimeMixin):
-    created_by = models.ForeignKey(
-        'auth.User',
+    disease = models.ManyToManyField(
+        'disease.Disease',
         default=None,
         null=True,
         blank=True,
+        on_delete=models.DO_NOTHING,
+        related_name="labels"
+    )
+
+
+class MedicalImage(DateTimeMixin):
+    """
+    This model holds the medical image data. Specifically,
+    it contains the image, the label, and information about
+    who created this entry.
+    """
+    created_by = models.ForeignKey(
+        'auth.User',
         editable=False,
         on_delete=models.DO_NOTHING,
         help_text="The user that uploaded this image"
@@ -40,6 +51,3 @@ class MedicalImage(DateTimeMixin):
         help_text="The labels associated with this image"
     )
 
-    @cached_property
-    def filetype(self):
-        return self.image.file_type
