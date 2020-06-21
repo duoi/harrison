@@ -17,19 +17,22 @@ class Disease(DateTimeMixin):
         blank=True,
         help_text="The name of the disease being referenced"
     )
-    snomed_ct_id = models.TextField(
+    snomed_ct_reference = models.ForeignKey(
+        'classification.ClassificationCode',
         default=None,
         null=True,
         blank=True,
         help_text="The SNOMED-CT code for this disease"
     )
-    icd_10 = models.TextField(
+    icd_10_reference = models.ForeignKey(
+        'classification.ClassificationCode',
         default=None,
         null=True,
         blank=True,
         help_text="The ICD-10 code for this disease"
     )
-    icd_9 = models.TextField(
+    icd_9_reference = models.ForeignKey(
+        'classification.ClassificationCode',
         default=None,
         null=True,
         blank=True,

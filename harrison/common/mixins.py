@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
+from rest_framework import serializers
 
 
 class DateTimeMixin(models.Model):
@@ -13,4 +14,17 @@ class DateTimeMixin(models.Model):
     )
     date_updated = models.DateTimeField(
         auto_now=True
+    )
+
+
+class DateTimeSerializerMixin(serializers.Serializer):
+    dateCreated = serializers.DateTimeField(
+        read_only=True,
+        required=False,
+        source="date_created"
+    )
+    dateUpdated = serializers.DateTimeField(
+        read_only=True,
+        required=False,
+        source="date_created"
     )
