@@ -6,7 +6,7 @@ import django.utils.timezone
 
 
 
-def create_default_standards():
+def create_default_standards(*args, **kwargs):
     from classification.models import ClassificationStandard
 
     items = ['SNOMED-CT', 'ICD-10', 'ICD-9']

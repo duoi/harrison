@@ -24,11 +24,11 @@ class RandomDiseaseFactory(factory.django.DjangoModelFactory):
         if not random.randint(0, 2) == 0:
             return
 
-        return factory.SubFactory(ClassificationCodeFactory)
+        return ClassificationCodeFactory()
 
     @factory.lazy_attribute
     def icd_9_reference(self):
         if not random.randint(0, 2) == 0:
             return
 
-        return factory.SubFactory(ClassificationCodeFactory)
+        return ClassificationCodeFactory()

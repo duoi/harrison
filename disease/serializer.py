@@ -78,9 +78,8 @@ class DiseaseSerializer(DateTimeSerializerMixin):
         return attrs
 
     def create(self, validated_data):
-        user = None  # pass user back
         obj = Disease.objects.create(
-            created_by=user
+            created_by=self.context['request'].user,
             **validated_data
         )
 

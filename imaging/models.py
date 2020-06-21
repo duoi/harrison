@@ -44,7 +44,7 @@ class MedicalImage(DateTimeMixin):
         help_text="The image that has been uploaded"
     )
     label = models.ManyToManyField(
-        'imaging.MedicalImage',
+        'imaging.ImageLabel',
         related_name="images_using_label",
         help_text="The labels associated with this image"
     )

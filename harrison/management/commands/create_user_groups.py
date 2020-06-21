@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 from harrison.common import constants
 
 class Command(BaseCommand):
-    help = 'Add default policy to database'
+    help = 'Add user groups'
 
     def handle(self, *args, **options):
         user_groups = [

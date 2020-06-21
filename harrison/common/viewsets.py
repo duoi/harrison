@@ -14,5 +14,5 @@ class BaseViewSet(
     permission_classes = [permissions.IsAuthenticated]
 
 
-    def initialize_request(self, request, *args, **kwargs):
-        import pdb; pdb.set_trace()
+    # def initialize_request(self, request, *args, **kwargs):
+    #     pass

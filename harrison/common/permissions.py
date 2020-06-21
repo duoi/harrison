@@ -4,7 +4,7 @@ from rest_framework import permissions
 from harrison.common.constants import RESEARCHER_USER_GROUP, MEDICAL_DOCTOR_USER_GROUP
 
 
-class IsDoctorOrReadOnly(permissions.BasePermission):
+class IsDoctorOrReadOnly(permissions.IsAuthenticated):
     """
     Object-level permission to only allow owners of an object to edit it.
     Assumes the model instance has an `owner` attribute.
@@ -23,7 +23,7 @@ class IsDoctorOrReadOnly(permissions.BasePermission):
         ).exists()
 
 
-class IsResearcherOrReadOnly(permissions.BasePermission):
+class IsResearcherOrReadOnly(permissions.IsAuthenticated):
     """
     Object-level permission to only allow owners of an object to edit it.
     Assumes the model instance has an `owner` attribute.
