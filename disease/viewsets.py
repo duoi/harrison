@@ -1,12 +1,8 @@
-from rest_framework import mixins, viewsets
-
-from imaging.models import MedicalImage
-
-
-class BaseViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
-    serializer_class = None
+from disease.models import Disease
+from disease.serializer import DiseaseSerializer
+from harrison.common.viewsets import BaseViewSet
 
 
-class MedicalImageViewSet(BaseViewSet):
-    serializer_class = MedicalImageSerializer
-    queryset = MedicalImage.objects.all()
+class DiseaseViewSet(BaseViewSet):
+    serializer_class = DiseaseSerializer
+    queryset = Disease.objects.all()
