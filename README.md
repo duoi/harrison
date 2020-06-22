@@ -34,6 +34,8 @@ I wouldn't implement in a production environment. This involves various things l
 10. I'd probably make Django admin usable - at the moment I haven't registered any of the apps for Admin.
 11. Uploaded files would of course be sent somewhere else and not kept on the instance's storage
 12. Also worth mentioning that I don't like how permissions are being handled here: I'd much rather add [django-guardian](https://django-guardian.readthedocs.io) and have a more complex permissions system associated with groups that can be stepped in and out of.
+13. Separate serializers for list and detail views would probably go in as well (overriding `get_serializer` and switching based on the action)
+
 -----
 
 # Running the app
